@@ -18,6 +18,7 @@ yarn start
 ````
 
 ### Mobile
+React Native
 ````
 cd mobile
 yarn install
