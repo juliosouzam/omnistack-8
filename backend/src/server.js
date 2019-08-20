@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+require('dotenv').config()
 const routes = require("./routes");
 
 const app = express();
@@ -16,8 +16,9 @@ io.on("connection", socket => {
   connectedUsers[user] = socket.id;
 });
 
+const dbConfig = require('./config/db');
 mongoose.connect(
-  "mongodb+srv://omnistack:omnistack@cluster0-69txq.mongodb.net/omnistack8?retryWrites=true&w=majority",
+  `mongodb+srv://${dbConfig.connection.user}:${dbConfig.connection.pass}@cluster0-69txq.mongodb.net/${dbConfig.connection.database}?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true
   }
